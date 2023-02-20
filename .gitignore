@@ -8,6 +8,7 @@ out/
 .idea/usage.statistics.xml
 .idea/misc.xml
 .idea/modules.xml
+.idea/uiDesigner.xml
 .idea/tasks.xml
 .iml
 .iws

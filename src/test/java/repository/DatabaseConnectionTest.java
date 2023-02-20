@@ -1,7 +1,10 @@
+package repository;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Connection;
 import java.util.Properties;
 
 import org.junit.jupiter.api.Test;
@@ -38,5 +41,10 @@ class DatabaseConnectionTest {
         assertEquals(expectedUrl, "jdbc:mysql://localhost:3307/test");
         assertEquals(expectedUser, "test_user");
         assertEquals(expectedPassword, "secret");
+    }
+    @Test
+    void testGetDatabaseConnection() {
+        Connection connection = DatabaseConnection.getConnection();
+        assertNotNull(connection);
     }
 }
