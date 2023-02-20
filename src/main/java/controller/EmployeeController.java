@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.io.Serial;
 
 /**
  * Servlet implementation class
  */
-@WebServlet("/EmployeeController")
+@WebServlet("/employee")
 public class EmployeeController extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 1L;
     public EmployeeController() {
         super();
@@ -32,16 +33,10 @@ public class EmployeeController extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        EmployeeRepository employeeRepo = new EmployeeDAO();
-//        EmployeeService employeeService = new EmployeeService(employeeRepo);
-//        List<Employee> employees = employeeService.findAllEmployees();
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<h2>List of all employees</h2>");
 
-//        for (Employee employee : employees) {
-//            out.println("<p>" + employee + "</p>");
-//        }
     }
 }
