@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Servlet implementation class
  */
-@WebServlet("/employee")
+@WebServlet("/employees")
 public class EmployeeController extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
