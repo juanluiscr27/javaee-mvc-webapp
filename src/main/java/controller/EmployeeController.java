@@ -1,5 +1,10 @@
 package controller;
 
+import model.Employee;
+import repository.EmployeeDAO;
+import repository.EmployeeRepository;
+import service.EmployeeService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serial;
+import java.util.List;
 
 /**
  * Servlet implementation class
@@ -33,10 +39,16 @@ public class EmployeeController extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        EmployeeRepository employeeRepo = new EmployeeDAO();
+        EmployeeService employeeService = new EmployeeService(employeeRepo);
+        List<Employee> employees = employeeService.findAllEmployees();
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<h2>List of all employees</h2>");
 
+        for (Employee employee : employees) {
+            out.println("<p>" + employee + "</p>");
+        }
     }
 }
