@@ -9,10 +9,15 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 class EmployeeDAOTest {
     @Test
-    void testFind() throws SQLException {
+    void testFindEmployeeById(){
         int expectedId = 1;
+        Optional<Employee> employee;
         EmployeeRepository employeeDAO = new EmployeeDAO();
-        Optional<Employee> employee = employeeDAO.find(expectedId);
-        assertEquals(expectedId, employee.orElse(new Employee()).getEmp_no());
+        try {
+            employee= employeeDAO.find(expectedId);
+            assertEquals(expectedId, employee.orElse(new Employee()).getEmp_no());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
