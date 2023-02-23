@@ -12,10 +12,18 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="javax:javaee-api-8.0.1" level="project" />
     <orderEntry type="library" name="mysql-connector-java 8.0.32" level="project" />
-    <orderEntry type="library" name="org.junit-platform-engine:1.8.2" level="project" />
-    <orderEntry type="library" name="org.apiguardian-api:1.1.2" level="project" />
-    <orderEntry type="library" name="org.junit-platform-commons:1.8.2" level="project" />
-    <orderEntry type="library" name="org.junit.jupiter-api:5.8.2" level="project" />
-    <orderEntry type="library" name="org.opentest4j:1.2.0" level="project" />
+    <orderEntry type="library" name="commons-logging:1.2" level="project" />
+    <orderEntry type="library" name="org.apache.commons-dbcp2:2.9.0" level="project" />
+    <orderEntry type="library" name="org.apache.commons-pool2:2.10.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.apiguardian-api:1.1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.junit-jupiter-engine:5.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.junit-platform-commons:1.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.junit-plaform-launcher:1.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.junit-plaform-suite-commons:1.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.junit-plaform-suite-api:1.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.junit-plaform-suite-engine:1.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.junit-platform-engine:1.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.opentest4j:1.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.junit-jupiter-api:5.9.2" level="project" />
   </component>
 </module>

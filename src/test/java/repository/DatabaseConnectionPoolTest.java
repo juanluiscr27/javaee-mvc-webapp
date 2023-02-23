@@ -1,6 +1,7 @@
 package repository;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -8,6 +9,7 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Tests for Database Connection Pool class")
 class DatabaseConnectionPoolTest {
     Connection connection;
     Connection connection1;

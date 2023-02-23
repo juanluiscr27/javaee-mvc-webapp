@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Tests for Database Connection class with MySQL")
 class DatabaseConnectionTest {
     Connection connection;
     @Test

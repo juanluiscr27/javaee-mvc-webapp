@@ -1,5 +1,6 @@
 package repository;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Test for Configuration Properties File Reader class")
 class PropertiesFileReaderTest {
     @Test
     void testReadConfigPropertiesFile() {
