@@ -8,7 +8,7 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="employee" method="POST">
+    <form action="employees" method="POST">
         <h2>See list of all employees</h2>
         <input type="submit" value="Submit">
     <form>

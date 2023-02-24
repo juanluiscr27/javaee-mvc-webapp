@@ -13,18 +13,17 @@ public class DatabaseConnectionPool {
 
         try {
             if (dataSource == null) {
-                PropertiesFileReader propReader = new PropertiesFileReader("src/main/resources/config.properties");
+                PropertiesFileReader propReader = new PropertiesFileReader("mysql.db","config.properties");
 
                 dataSource = new BasicDataSource();
-                dataSource.setDriverClassName(propReader.getProperty("mysql.db.driver"));
-                dataSource.setUrl(propReader.getProperty("mysql.db.url"));
-                dataSource.setUsername(propReader.getProperty("mysql.db.user"));
-                dataSource.setPassword(propReader.getProperty("mysql.db.password"));
-
-                dataSource.setInitialSize(Integer.parseInt(propReader.getProperty("mysql.db.pool.initsize"))); // The initial number of connections that
-                // are created when the pool is started.
-                dataSource.setMaxTotal(Integer.parseInt(propReader.getProperty("mysql.db.pool.maxsize"))); // The maximum number of active connections
-                // that can be allocated from this pool
+                dataSource.setDriverClassName(propReader.getProperty("pool.driver"));
+                dataSource.setUrl(propReader.getProperty("url"));
+                dataSource.setUsername(propReader.getProperty("user"));
+                dataSource.setPassword(propReader.getProperty("password"));
+                // The initial number of connections that are created when the pool is started.
+                dataSource.setInitialSize(Integer.parseInt(propReader.getProperty("pool.initsize")));
+                // The maximum number of active connections that can be allocated from this pool
+                dataSource.setMaxTotal(Integer.parseInt(propReader.getProperty("pool.maxsize")));
                 dataSource.setMaxWaitMillis(3000L);
             }
             connection = dataSource.getConnection();

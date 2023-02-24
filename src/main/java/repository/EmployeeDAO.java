@@ -17,10 +17,10 @@ public class EmployeeDAO implements EmployeeRepository {
     }
 
     @Override
-    public Optional<Employee> find(Integer id) throws SQLException {
+    public Optional<Employee> find(Integer id) {
         Employee employee = null;
         try {
-            Connection connection = DatabaseConnection.getConnection();
+            Connection connection = DatabaseConnectionPool.getConnection();
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM employees" +
                     " WHERE emp_no = ?");
             statement.setInt(1, id);
@@ -39,13 +39,13 @@ public class EmployeeDAO implements EmployeeRepository {
             resultSet.close();
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return Optional.ofNullable(employee);
     }
 
     @Override
-    public List<Employee> findAll() throws SQLException {
+    public List<Employee> findAll() {
         List<Employee> employees = new ArrayList<>();
         try {
             Connection connection = DatabaseConnection.getConnection();
@@ -71,12 +71,12 @@ public class EmployeeDAO implements EmployeeRepository {
     }
 
     @Override
-    public Employee update(Employee employee) throws SQLException {
+    public Employee update(Employee employee) {
         return employee;
     }
 
     @Override
-    public void delete(Employee employee) throws SQLException {
+    public void delete(Employee employee) {
         return;
     }
 

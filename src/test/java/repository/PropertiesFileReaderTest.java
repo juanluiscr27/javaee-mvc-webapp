@@ -3,12 +3,6 @@ package repository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Properties;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Test for Configuration Properties File Reader class")
@@ -16,30 +10,20 @@ class PropertiesFileReaderTest {
     @Test
     void testReadConfigPropertiesFile() {
         //Create an input stream to read the properties file
-        String expectedUrl = null;
-        String expectedUser = null;
-        String expectedPassword = null;
+        String actualUrl;
+        String actualUser;
+        String actualPassword;
 
-        try (InputStream input = Files.newInputStream(
-                Paths.get("src/main/resources/config.properties")
-        )) {
+        PropertiesFileReader propReader = new PropertiesFileReader("mysql.db","config.properties");
 
-            Properties prop = new Properties();
+        actualUrl = propReader.getProperty("url");
+        actualUser = propReader.getProperty("user");
+        actualPassword = propReader.getProperty("password");
 
-            // Load the properties file to the properties object
-            prop.load(input);
-
-            // Get the property value and print it out
-            expectedUrl = prop.getProperty("mysql.db.url");
-            expectedUser = prop.getProperty("mysql.db.user");
-            expectedPassword = prop.getProperty("mysql.db.password");
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        assertEquals(expectedUrl, "jdbc:mysql://localhost:3307/test");
-        assertEquals(expectedUser, "test_user");
-        assertEquals(expectedPassword, "secret");
+        assertAll(
+                () -> assertEquals("jdbc:mysql://localhost:3307/test", actualUrl),
+                () ->assertEquals("test_user", actualUser),
+                () -> assertEquals("secret", actualPassword)
+        );
     }
 }

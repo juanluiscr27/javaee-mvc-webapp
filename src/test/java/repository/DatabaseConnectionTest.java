@@ -2,6 +2,7 @@ package repository;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import com.mysql.cj.jdbc.ConnectionImpl;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +16,7 @@ class DatabaseConnectionTest {
     @Test
     void testGetDatabaseConnection() {
         connection = DatabaseConnection.getConnection();
-        assertNotNull(connection);
+        assertEquals(ConnectionImpl.class, connection.getClass());
     }
 
     @AfterEach
