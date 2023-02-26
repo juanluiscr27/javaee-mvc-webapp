@@ -6,6 +6,10 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <display-name>Java EE App MVC</display-name>
+
+    <listener>
+        <listener-class>startup.ContextManager</listener-class>
+    </listener>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
         <welcome-file>index.html</welcome-file>

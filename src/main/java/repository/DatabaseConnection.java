@@ -20,13 +20,13 @@ public class DatabaseConnection {
 
         try {
             // Registering the MySQL Driver with Class.forName() is required to work with Tomcat Server
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            // Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException ex) {
             System.out.println("Failed to create a connection to database.\n" + ex.getMessage());
-        } catch (ClassNotFoundException e) {
+        } /*catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
-        }
+        }*/
         return connection;
     }
 }
