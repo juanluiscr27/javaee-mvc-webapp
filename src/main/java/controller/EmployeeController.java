@@ -5,15 +5,15 @@ import repository.EmployeeDAO;
 import repository.EmployeeRepository;
 import service.EmployeeService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Serial;
-import java.util.List;
+import java.time.LocalDate;
 
 /**
  * Servlet implementation class
@@ -26,29 +26,29 @@ public class EmployeeController extends HttpServlet {
         super();
     }
 
-    /**
-     * Respond to HTTP GET Method
-     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/employees.html");
+        requestDispatcher.forward(request, response);
     }
-
-    /**
-     * Respond to HTTP POST Method
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        Employee employeeRequest = new Employee(
+                100,
+                LocalDate.parse(request.getParameter("date-of-birth")),
+                request.getParameter("first-name"),
+                request.getParameter("last-name"),
+                request.getParameter("gender").charAt(0),
+                LocalDate.now(),
+                request.getParameter("department")
+        );
+
         EmployeeRepository employeeRepo = new EmployeeDAO();
         EmployeeService employeeService = new EmployeeService(employeeRepo);
-        List<Employee> employees = employeeService.findAllEmployees();
+        Employee employees = employeeService.addEmployee(employeeRequest);
 
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<h2>List of all employees</h2>");
-
-        for (Employee employee : employees) {
-            out.println("<p>" + employee + "</p>");
-        }
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/employees.html");
+        requestDispatcher.forward(request, response);
     }
 }
